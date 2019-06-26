@@ -9,9 +9,7 @@ class Header extends StatelessWidget {
   final String _need_project = 'I need to create project';
   final String _looking_to_hire = "I'm looking to hire";
 
-  final ScrollController scrollController;
-
-  const Header(this.scrollController);
+  const Header();
 
   @override
   Widget build(BuildContext context) {
@@ -111,11 +109,7 @@ class Header extends StatelessWidget {
                       width: 50,
                     ),
                     InkWell(
-                      onTap: () {
-                        scrollController.animateTo(context.size.height,
-                            duration: Duration(seconds: 1),
-                            curve: Curves.fastOutSlowIn);
-                      },
+                      onTap: () {},
                       child: Text(
                         "PROJECTS",
                         style: TextStyle(

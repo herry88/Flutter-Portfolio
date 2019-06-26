@@ -61,11 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: AppColors.redAccent,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
-      body: SingleChildScrollView(
-        controller: scrollController,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Header(scrollController), Body(), Footer()]),
+      body: ListView(
+        children: <Widget>[
+          Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[Header(), Body(), Footer()]),
+        ],
       ),
     );
   }
