@@ -3,6 +3,7 @@ import 'package:portfolio/data/projects.dart';
 import 'package:portfolio/utils/colors.dart';
 import 'package:portfolio/utils/flutter_swiper.dart';
 import 'package:portfolio/widgets/responsive_widget.dart';
+import 'dart:html' as html;
 
 class ProjectItem extends StatefulWidget {
   final Project project;
@@ -99,7 +100,9 @@ class _ProjectItemState extends State<ProjectItem> {
                         height: 200,
                       ),
                       OutlineButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          html.window.open(project.link, project.title);
+                        },
                         padding:
                             EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                         borderSide:
