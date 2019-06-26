@@ -17,16 +17,16 @@ class Footer extends StatelessWidget {
 
   Widget _largeScreen(BuildContext context) {
     return Container(
-        height: 500,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
-            shape: BoxShape.rectangle,
-            image: DecorationImage(
-                image: AssetImage('images/cover.jpg'),
-                alignment: Alignment.bottomLeft,
-                fit: BoxFit.cover)),
-        child: Container(
+      height: 500,
+      child: Stack(children: [
+        Image.asset(
+          'images/cover.jpg',
+          alignment: Alignment.bottomLeft,
+          fit: BoxFit.cover,
+          height: double.infinity,
+          width: double.infinity,
+        ),
+        Container(
           padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width / 5, vertical: 30),
           color: AppColors.blackTransparent,
@@ -58,55 +58,59 @@ class Footer extends StatelessWidget {
                       child: Container(width: 600, child: Contact())))
             ],
           ),
-        ));
+        ),
+      ]),
+    );
   }
 
   Widget _smallScreen(BuildContext context) {
     return Container(
         height: 600,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
-            shape: BoxShape.rectangle,
-            image: DecorationImage(
-                image: AssetImage('images/cover.jpg'),
-                alignment: Alignment.bottomLeft,
-                fit: BoxFit.cover)),
-        child: Container(
-          padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width / 10, vertical: 30),
-          color: AppColors.blackTransparent,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: AssetImage('images/me.jpg'),
-                          fit: BoxFit.cover)),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              _socialIcons(),
-              SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                  child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Container(width: 600, child: Contact())))
-            ],
+        child: Stack(children: [
+          Image.asset(
+            'images/cover.jpg',
+            alignment: Alignment.bottomLeft,
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
           ),
-        ));
+          Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width / 10,
+                vertical: 30),
+            color: AppColors.blackTransparent,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('images/me.jpg'),
+                            fit: BoxFit.cover)),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                _socialIcons(),
+                SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                    child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(width: 600, child: Contact())))
+              ],
+            ),
+          ),
+        ]));
   }
 
   Widget _socialIcons() {
