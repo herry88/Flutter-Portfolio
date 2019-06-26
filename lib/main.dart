@@ -7,6 +7,7 @@ import 'package:portfolio/utils/colors.dart';
 import 'package:portfolio/widgets/body.dart';
 import 'package:portfolio/widgets/footer.dart';
 import 'package:portfolio/widgets/header.dart';
+import 'package:portfolio/widgets/responsive_widget.dart';
 
 void main() => runApp(MyApp());
 
@@ -48,20 +49,84 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.sms),
-          backgroundColor: AppColors.redAccent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      appBar: ResponsiveWidget.isSmallScreen(context)
+          ? AppBar(
+              backgroundColor: AppColors.redAccent,
+            )
+          : null,
+      drawer: ResponsiveWidget.isSmallScreen(context) ? _drawer() : null,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.sms),
+        backgroundColor: AppColors.redAccent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      ),
+      body: SingleChildScrollView(
+        controller: scrollController,
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[Header(scrollController), Body(), Footer()]),
+      ),
+    );
+  }
+
+  Widget _drawer() {
+    return Drawer(
+      child: Container(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              padding: EdgeInsets.all(20),
+              child: Container(
+                padding: EdgeInsets.all(15),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: <Color>[AppColors.redAccent, Colors.red[400]],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight),
+                    shape: BoxShape.circle),
+                child: Text('AM',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    )),
+              ),
+            ),
+            ListTile(
+              onTap: () {},
+              title: Text(
+                "HOME",
+                style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black87),
+              ),
+            ),
+            ListTile(
+              onTap: () {},
+              title: Text(
+                "PROJECTS",
+                style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black87),
+              ),
+            ),
+            ListTile(
+              onTap: () {},
+              title: Text(
+                "CONTACT",
+                style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black87),
+              ),
+            ),
+          ],
         ),
-        body: SingleChildScrollView(
-          controller: scrollController,
-          child: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[Header(), Body(), Footer()]),
-          ),
-        ));
+      ),
+    );
   }
 }

@@ -5,6 +5,8 @@ import 'package:portfolio/widgets/responsive_widget.dart';
 import 'dart:html' as html;
 
 class Footer extends StatelessWidget {
+  final double iconSize = 35;
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -45,7 +47,7 @@ class Footer extends StatelessWidget {
                             fit: BoxFit.cover)),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   _socialIcons(),
                 ],
@@ -117,8 +119,8 @@ class Footer extends StatelessWidget {
           },
           child: Image.asset(
             'images/github.png',
-            height: 25,
-            width: 25,
+            height: iconSize,
+            width: iconSize,
           ),
         ),
         SizedBox(
@@ -132,8 +134,8 @@ class Footer extends StatelessWidget {
           },
           child: Image.asset(
             'images/linkedin.png',
-            height: 25,
-            width: 25,
+            height: iconSize,
+            width: iconSize,
           ),
         ),
         SizedBox(
@@ -146,8 +148,8 @@ class Footer extends StatelessWidget {
           },
           child: Image.asset(
             'images/facebook.png',
-            height: 25,
-            width: 25,
+            height: iconSize,
+            width: iconSize,
           ),
         ),
         SizedBox(
@@ -159,8 +161,8 @@ class Footer extends StatelessWidget {
           },
           child: Image.asset(
             'images/twitter.png',
-            height: 25,
-            width: 25,
+            height: iconSize,
+            width: iconSize,
           ),
         ),
       ],
