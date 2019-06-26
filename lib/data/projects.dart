@@ -27,7 +27,6 @@ final List<Project> projects = [
         'Dart',
         'Php',
         'Flutter',
-        'Laravel',
         'One Signal',
       ],
       images: [

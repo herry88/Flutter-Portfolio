@@ -2,6 +2,7 @@ import 'package:flutter_web/material.dart';
 import 'package:portfolio/utils/colors.dart';
 import 'package:portfolio/widgets/contact.dart';
 import 'package:portfolio/widgets/responsive_widget.dart';
+import 'dart:html' as html;
 
 class Footer extends StatelessWidget {
   @override
@@ -46,39 +47,7 @@ class Footer extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    children: <Widget>[
-                      Image.asset(
-                        'images/linkedin.png',
-                        height: 25,
-                        width: 25,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        'images/facebook.png',
-                        height: 25,
-                        width: 25,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        'images/twitter.png',
-                        height: 25,
-                        width: 25,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Image.asset(
-                        'images/github.png',
-                        height: 25,
-                        width: 25,
-                      ),
-                    ],
-                  )
+                  _socialIcons(),
                 ],
               ),
               Expanded(
@@ -125,40 +94,7 @@ class Footer extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    'images/linkedin.png',
-                    height: 25,
-                    width: 25,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Image.asset(
-                    'images/facebook.png',
-                    height: 25,
-                    width: 25,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Image.asset(
-                    'images/twitter.png',
-                    height: 25,
-                    width: 25,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Image.asset(
-                    'images/github.png',
-                    height: 25,
-                    width: 25,
-                  ),
-                ],
-              ),
+              _socialIcons(),
               SizedBox(
                 height: 20,
               ),
@@ -169,5 +105,65 @@ class Footer extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  Widget _socialIcons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        InkWell(
+          onTap: () {
+            html.window.open('https://github.com/GeekAbdelouahed', 'Github');
+          },
+          child: Image.asset(
+            'images/github.png',
+            height: 25,
+            width: 25,
+          ),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        InkWell(
+          onTap: () {
+            html.window.open(
+                'https://www.linkedin.com/in/abdelouahed-medjoudja/',
+                'Linkedin');
+          },
+          child: Image.asset(
+            'images/linkedin.png',
+            height: 25,
+            width: 25,
+          ),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        InkWell(
+          onTap: () {
+            html.window.open(
+                'https://www.facebook.com/AbdelouahedMedjoudja', 'Facebook');
+          },
+          child: Image.asset(
+            'images/facebook.png',
+            height: 25,
+            width: 25,
+          ),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        InkWell(
+          onTap: () {
+            html.window.open('https://twitter.com/MedAbdelouahed', 'Twitter');
+          },
+          child: Image.asset(
+            'images/twitter.png',
+            height: 25,
+            width: 25,
+          ),
+        ),
+      ],
+    );
   }
 }

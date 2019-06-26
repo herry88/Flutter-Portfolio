@@ -29,7 +29,7 @@ class _ProjectItemState extends State<ProjectItem> {
   Widget _largeScreen(BuildContext context) {
     return Container(
         margin: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width / 5, vertical: 100),
+            horizontal: MediaQuery.of(context).size.width / 5, vertical: 50),
         alignment: Alignment.center,
         child: Column(
           children: <Widget>[
@@ -55,40 +55,67 @@ class _ProjectItemState extends State<ProjectItem> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        project.title,
-                        style: TextStyle(
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            project.title,
+                            style: TextStyle(
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            project.description,
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Wrap(
+                              spacing: 10,
+                              children: project.tags
+                                  .map(
+                                    (tag) => Chip(
+                                          backgroundColor: AppColors.redAccent,
+                                          label: Text(
+                                            tag,
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ),
+                                  )
+                                  .toList())
+                        ],
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 200,
                       ),
-                      Text(
-                        project.description,
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: Colors.grey[600],
+                      OutlineButton(
+                        onPressed: () {},
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                        borderSide:
+                            BorderSide(color: AppColors.redAccent, width: 2),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(23),
                         ),
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      Wrap(
-                          spacing: 10,
-                          children: project.tags
-                              .map(
-                                (tag) => Chip(
-                                      backgroundColor: AppColors.redAccent,
-                                      label: Text(
-                                        tag,
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                              )
-                              .toList())
+                        child: Text(
+                          'PREVIEW',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w300,
+                            color: AppColors.redAccent,
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 )
@@ -97,12 +124,9 @@ class _ProjectItemState extends State<ProjectItem> {
             SizedBox(
               height: 50,
             ),
-            Card(
-              elevation: 10,
-              child: Container(
-                height: 1,
-                color: Colors.grey,
-              ),
+            Container(
+              height: 1,
+              color: Colors.grey.withAlpha(80),
             )
           ],
         ));
@@ -112,7 +136,7 @@ class _ProjectItemState extends State<ProjectItem> {
     return Center(
       child: Container(
           margin: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width / 10, vertical: 50),
+              horizontal: MediaQuery.of(context).size.width / 10, vertical: 20),
           alignment: Alignment.center,
           child: Column(
             children: <Widget>[
@@ -126,6 +150,9 @@ class _ProjectItemState extends State<ProjectItem> {
                     itemBuilder: (context, index) =>
                         Image.asset(project.images[index]),
                   )),
+              SizedBox(
+                height: 20,
+              ),
               Text(
                 project.title,
                 style: TextStyle(
@@ -135,7 +162,7 @@ class _ProjectItemState extends State<ProjectItem> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Text(
                 project.description,
@@ -145,7 +172,7 @@ class _ProjectItemState extends State<ProjectItem> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 15,
               ),
               Wrap(
                   spacing: 10,
@@ -160,13 +187,13 @@ class _ProjectItemState extends State<ProjectItem> {
                             ),
                       )
                       .toList()),
-              Card(
-                elevation: 10,
-                child: Container(
-                  height: 1,
-                  color: Colors.grey,
-                ),
-              )
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 1,
+                color: Colors.grey.withAlpha(80),
+              ),
             ],
           )),
     );
